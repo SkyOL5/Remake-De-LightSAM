@@ -241,7 +241,8 @@ class Attention(torch.nn.Module):
         ##################################
 
         points = list(itertools.product(
-            range(resolution[0]), range(resolution[1])))
+                range(resolution[0]), range(resolution[1]))
+            )
         N = len(points)
         attention_offsets = {}
         idxs = []

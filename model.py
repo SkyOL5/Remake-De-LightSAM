@@ -5,6 +5,7 @@ import torch
 import cv2
 from SAM.modeling.mask_decoder import MaskDecoder
 from SAM.modeling.prompt_encoder import PromptEncoder
+
 from SAM.modeling.transformer import TwoWayTransformer
 from SAM.modeling.common import LayerNorm2d
 from typing import List, Tuple, Type, Optional
@@ -106,7 +107,7 @@ class ESPMedSAM(nn.Module):
                 src=mask_src,
                 pos_src=mask_pos_src,
                 tokens=tokens_mask,
-                mcls=domain_seq#[idx]
+                mcls=domain_seq #[idx]
             )
 
             masks = F.interpolate(low_res_masks, (1024, 1024), mode="bilinear", align_corners=False)
