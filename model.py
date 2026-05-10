@@ -71,7 +71,10 @@ class ESPMedSAM(nn.Module):
 
         image_embeddings = self.SemiTViT(x)
 
+        ## used for patch decoder training
         patch_map = self.patch_decoder(image_embeddings)
+
+        ## 梯度在此截断(.detach()复制tensor, 截断梯度)
         prob_map = torch.sigmoid(patch_map.detach())
         prob_map[prob_map >= 0.5] = 1
         prob_map[prob_map < 0.5] = 0
