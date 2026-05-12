@@ -55,8 +55,6 @@ class MaskDecoder(nn.Module):
             ]
         )
         
-
-
     def forward(
         self,
         src: torch.Tensor,
